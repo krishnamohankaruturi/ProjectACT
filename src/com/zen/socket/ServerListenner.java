@@ -19,7 +19,9 @@ public class ServerListenner extends Thread {
 				//建立连接
 				JOptionPane.showMessageDialog(null,"有客户端连接到了本机的12345端口");
 				//将socket传递给新的线程
-				new ChatSocket(socket).start();
+				ChatSocket cs = new ChatSocket(socket);
+				cs.start();
+				ChatManager.getChatManager().add(cs);
 			}
 			
 			
